@@ -1,4 +1,4 @@
-package source;
+package source.model;
 public enum Type {
     VILLAGEOIS,
     VILLAGEOIS_SPECIAL,

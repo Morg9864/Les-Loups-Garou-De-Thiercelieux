@@ -1,4 +1,4 @@
-package source;
+package source.model;
 public enum Team {
     VILLAGE,
     LOUPS,

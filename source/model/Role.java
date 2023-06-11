@@ -1,4 +1,4 @@
-package source;
+package source.model;
 public class Role {
     private String name;
     private String description;
