@@ -21,13 +21,13 @@ delete_class_files .
 cd ..
 
 # Compiler le fichier "SimulatorMainGUI.java"
-javac source/view/SimulatorMainGUI.java
+javac source/MainApp.java
 
 # On netttoie le terminal
 clear
 
 # Exécuter la classe "SimulatorMainGUI"
-java source.view.SimulatorMainGUI
+java source.MainApp
 
 # Supprimer les fichiers "*.class" récursivement
 delete_class_files .
