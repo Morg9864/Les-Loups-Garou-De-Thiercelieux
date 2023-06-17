@@ -18,8 +18,6 @@ public class Simulator {
             throw new NbPlayersIncorrectException("Le nombre de joueurs doit être compris entre 8 et 46");
         }
 
-        selectedRoles = new HashMap<Role, Integer>();
-
         // Une proportion correcte pour une partie est 
         // 1/4 de villageois
         // 1/4 de loups-garous
@@ -50,7 +48,7 @@ public class Simulator {
 
         // On ajoute les rôles à la hashmap
         // Chaque rôle agit comme une clé et le nombre de fois qu'il apparaît comme valeur
-        
+        selectedRoles = new HashMap<Role, Integer>();
         rolesMapped(villageois, loupsGarous, thirdParty);
 
     }
@@ -71,6 +69,8 @@ public class Simulator {
         nbVillageois = sc.nextInt();
         nbLoupsGarous = sc.nextInt();
         nbThirdParty = sc.nextInt();
+        // We go to the beginning of the next line
+        sc.nextLine();
 
         boolean verification = nbVillageois + nbLoupsGarous + nbThirdParty == nbPlayers ? true : false;
         if(!verification){
@@ -82,32 +82,16 @@ public class Simulator {
         Roles roles = new Roles();
         HashMap<String, String[]> parsedRole = roles.getParseTable();
         
-        int clean = 0, bad = 0, neutral = 0;
         for(int i = 0; i < nbPlayers; i++){
             String roleName = sc.nextLine();
-            Role role = new Role(roleName, parsedRole.get(roleName)[0], Type.fromString(parsedRole.get(roleName)[1]), Team.fromString(parsedRole.get(roleName)[2]), parsedRole.get(roleName)[3]);
-            if(role.getTeam() == Team.VILLAGE){
-                clean++;
-            } else if(role.getTeam() == Team.LOUPS){
-                bad++;
-            } else {
-                neutral++;
+            removeBSN(roleName);
+            if(!parsedRole.containsKey(roleName)){
+                sc.close();
+                throw new IOException("Le fichier contient un rôle qui n'existe pas");
             }
-            selectedRoles.put(role, selectedRoles.get(role) + 1);
-        }
-        
-        // Vérication du nombre de joueurs et du nombre de villageois, loups-garous et tiers
-        if(clean != nbVillageois){
-            sc.close();
-            throw new NbPlayersIncorrectException("Le nombre de villageois enregistré (" + clean + ") ne correspond pas au nombre de villageois attendu (" + nbVillageois + ")");
-        }
-        if(bad != nbLoupsGarous){
-            sc.close();
-            throw new NbPlayersIncorrectException("Le nombre de loups-garous enregistré (" + bad + ") ne correspond pas au nombre de loups-garous attendu (" + nbLoupsGarous + ")");
-        }
-        if(neutral != nbThirdParty){
-            sc.close();
-            throw new NbPlayersIncorrectException("Le nombre de tiers enregistré (" + neutral + ") ne correspond pas au nombre de tiers attendu (" + nbThirdParty + ")");
+            Role role = new Role(roleName, parsedRole.get(roleName)[0], Type.fromString(parsedRole.get(roleName)[1]), Team.fromString(parsedRole.get(roleName)[2]), parsedRole.get(roleName)[3]);
+
+            pushIntoHashmap(role);
         }
 
         // On vérifie que le fichier ne contient plus rien
@@ -118,12 +102,16 @@ public class Simulator {
 
         sc.close();
     }
+
+    private void removeBSN(String str){
+        str = str.replaceAll("\n", "");
+    }
   
     public void save(String filename) throws IOException{
         FileWriter fw = new FileWriter(filename);
-        fw.write(nbPlayers + " " + nbVillageois + " " + nbLoupsGarous + " " + nbThirdParty + "\n");
+        fw.write(nbPlayers + "\n" + nbVillageois + " " + nbLoupsGarous + " " + nbThirdParty + "\n");
         for(Role role : selectedRoles.keySet()){
-            fw.write(role.getName());
+            fw.write(role.getName() + "\n");
         }
         fw.close();
     }
@@ -132,7 +120,6 @@ public class Simulator {
         ArrayList<String[]> roleToShow = new ArrayList<String[]>();
         String previousRole = "";
         for(Role role : selectedRoles.keySet()){
-            // On ne veut pas de doublons
             if(!role.getName().equals(previousRole)){
                 String[] roleInfo = new String[4];
                 roleInfo[0] = role.getName();
@@ -153,28 +140,30 @@ public class Simulator {
 
     private void rolesMapped(ArrayList<Role> villageois, ArrayList<Role> loupsGarous, ArrayList<Role> thirdParty) {
         for(Role role : villageois){
-            if(selectedRoles.containsKey(role)){
-                selectedRoles.put(role, selectedRoles.get(role) + 1);
-            } else {
-                selectedRoles.put(role, 1);
-            }
+            pushIntoHashmap(role);
         }
 
         for(Role role : loupsGarous){
-            if(selectedRoles.containsKey(role)){
-                selectedRoles.put(role, selectedRoles.get(role) + 1);
-            } else {
-                selectedRoles.put(role, 1);
-            }
+            pushIntoHashmap(role);
         }
 
         for(Role role : thirdParty){
-            if(selectedRoles.containsKey(role)){
-                selectedRoles.put(role, selectedRoles.get(role) + 1);
-            } else {
-                selectedRoles.put(role, 1);
+            pushIntoHashmap(role);
+        }
+    }
+
+    private void pushIntoHashmap(Role role) {
+        // On vérifie que le rôle n'est pas déjà dans la hashmap
+        // Pour cela, on vérifie que le nom du rôle n'est pas déjà celui d'une clé
+        for(Role key : selectedRoles.keySet()){
+            if(key.getName().equals(role.getName())){
+                selectedRoles.put(key, selectedRoles.get(key) + 1);
+                return;
             }
         }
+
+        // Si le rôle n'est pas dans la hashmap, on l'ajoute
+        selectedRoles.put(role, 1);
     }
 
     private int dividedByFour(int nbPlayers) {
@@ -200,6 +189,30 @@ public class Simulator {
 
     public int getNbThirdParty() {
         return nbThirdParty;
+    }
+
+    /**
+     * @return the number of != roles
+     */
+    public int getNbRoles(){
+        HashMap<Role, Integer> differentRoles = new HashMap<Role, Integer>();
+        for(Role k : selectedRoles.keySet()){
+            if(!differentRoles.containsKey(k)){
+                differentRoles.put(k, 1);
+            }
+        }
+
+        return differentRoles.size();
+    }
+
+    public static void main(String[] args) throws NbPlayersIncorrectException {
+        Simulator sim = new Simulator(46, true, true);
+        // save it into a file
+        try {
+            sim.save("test.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
  
 }
