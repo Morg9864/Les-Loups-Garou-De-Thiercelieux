@@ -204,15 +204,4 @@ public class Simulator {
 
         return differentRoles.size();
     }
-
-    public static void main(String[] args) throws NbPlayersIncorrectException {
-        Simulator sim = new Simulator(46, true, true);
-        // save it into a file
-        try {
-            sim.save("test.txt");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
- 
 }
