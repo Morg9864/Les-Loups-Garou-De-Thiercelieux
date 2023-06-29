@@ -57,12 +57,10 @@ public class Roles {
         roles.add(new Role("Idiot du Village", "Vous êtes l'idiot du village. Si vous êtes tué, vous ne mourrez pas et vous ne pouvez plus voter.", Type.VILLAGEOIS_SPECIAL, Team.VILLAGE,  "../../images/idiot_du_village.png"));
 
         // 2 les deux soeurs
-        for(int i = 0; i < 2; i++)
-            roles.add(new Role("Les Deux Soeurs", "Vous êtes l'une des soeurs. Vous connaissez l'identité de l'autre. Si l'une des deux meurt, l'autre meurt de chagrin.", Type.VILLAGEOIS_SPECIAL, Team.VILLAGE,  "../../images/deux_soeurs.png"));
+        roles.add(new Role("Les Deux Soeurs", "Vous êtes l'une des soeurs. Vous connaissez l'identité de l'autre. Si l'une des deux meurt, l'autre meurt de chagrin.", Type.VILLAGEOIS_SPECIAL, Team.VILLAGE,  "../../images/deux_soeurs.png"));
 
         // 3 les trois frères
-        for(int i = 0; i < 3; i++)
-            roles.add(new Role("Les Trois Frères", "Vous êtes l'un des frères. Vous connaissez l'identité des deux autres. Si l'un des trois meurt, les deux autres meurent de chagrin.", Type.VILLAGEOIS_SPECIAL, Team.VILLAGE,  "../../images/trois_freres.png"));
+        roles.add(new Role("Les Trois Frères", "Vous êtes l'un des frères. Vous connaissez l'identité des deux autres. Si l'un des trois meurt, les deux autres meurent de chagrin.", Type.VILLAGEOIS_SPECIAL, Team.VILLAGE,  "../../images/trois_freres.png"));
 
         // 1 juge bègue
         roles.add(new Role("Juge Bègue", "Vous êtes le juge bègue. Lors de la 1ère nuit, vous choissisez un signe, qui pourra être utilisé une fois pendant la partie pour lancer un 2nd vote diurne.", Type.VILLAGEOIS_SPECIAL, Team.VILLAGE,  "../../images/juge_begue.png"));
@@ -110,7 +108,7 @@ public class Roles {
         roles.add(new Role("Gitane", "Vous êtes la gitane. Une nuit sur 2, vous pouvez choisir parmi une liste une question qui sera posé au 1er défunt.", Type.SPECIFIQUE, Team.VILLAGE, "../../images/gitane.png"));
 
         // 4 loup-garous
-        for(int i = 0; i < NB_LOUPS_GAROUS; i++)
+        for(int i = 0; i < NB_LOUPS_GAROUS - 2; i++)
             roles.add(new Role("Loup-Garou", "Vous êtes un loup-garou. Chaque nuit, vous pouvez dévorer un joueur. Vous gagnez si tous les villageois sont morts.", Type.LOUP_GAROU, Team.LOUPS, "../../images/loup_garou.png"));
     
         // 1 loup-garou blanc
@@ -256,11 +254,10 @@ public class Roles {
             if(newAddedRole.getName().equals("Les Deux Soeurs")) {
                 if(nbRoleToAdd - i >= 2){
                     // On ajoute les deux soeurs
-                    randomRoles.add(newAddedRole);
-                    randomRoles.add(getRole("Les Deux Soeurs"));
-                    // On supprime les deux soeurs de la liste des rôles
+                    for(int j = 0; j < 2; j++)
+                        randomRoles.add(newAddedRole);
+
                     thirdParty.remove(newAddedRole);
-                    thirdParty.remove(getRole("Les Deux Soeurs"));
                     // On incrémente i de 1
                     i++;
                 } else {
@@ -270,13 +267,10 @@ public class Roles {
             } else if(newAddedRole.getName().equals("Les Trois Frères")) {
                 if(nbRoleToAdd - i >= 3){
                     // On ajoute les trois frères
-                    randomRoles.add(newAddedRole);
-                    randomRoles.add(getRole("Les Trois Frères"));
-                    randomRoles.add(getRole("Les Trois Frères"));
-                    // On supprime les trois frères de la liste des rôles
+                    for(int j = 0; j < 3; j++)
+                        randomRoles.add(newAddedRole);
+                    
                     thirdParty.remove(newAddedRole);
-                    thirdParty.remove(getRole("Les Trois Frères"));
-                    thirdParty.remove(getRole("Les Trois Frères"));
                     // On incrémente i de 2
                     i += 2;
                 } else {
@@ -293,25 +287,4 @@ public class Roles {
 
         return randomRoles;
     }
-
-    // main to test
-    /* 
-    public static void main(String[] args) {
-        Roles roles = new Roles();
-
-        ArrayList<Role> villageois = roles.getVillageois(10);
-        ArrayList<Role> loupsGarous = roles.getLoupsGarous(6);
-        ArrayList<Role> thirdParty = roles.getThirdParty(30, true, true);
-
-        for(Role role : villageois)
-            role.print();
-
-        for(Role role : loupsGarous)
-            role.print();
-
-        for(Role role : thirdParty)
-            role.print();
-    }
-    */
-    
 }
