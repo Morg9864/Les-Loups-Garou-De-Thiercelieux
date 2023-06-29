@@ -111,7 +111,9 @@ public class Simulator {
         FileWriter fw = new FileWriter(filename);
         fw.write(nbPlayers + "\n" + nbVillageois + " " + nbLoupsGarous + " " + nbThirdParty + "\n");
         for(Role role : selectedRoles.keySet()){
-            fw.write(role.getName() + "\n");
+            for(int i = 0; i < selectedRoles.get(role); i++){
+                fw.write(role.getName() + "\n");
+            }
         }
         fw.close();
     }
