@@ -84,7 +84,7 @@ public class LoadRoleGUI extends JFrame{
 
         textArea2.setAlignmentX(CENTER_ALIGNMENT);
         textArea2.setAlignmentY(CENTER_ALIGNMENT);
-        
+
         textArea.setForeground(Color.WHITE);
         textArea2.setForeground(Color.WHITE);
         textArea.setWrapStyleWord(true);

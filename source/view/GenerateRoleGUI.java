@@ -15,8 +15,8 @@ public class GenerateRoleGUI extends JFrame{
     private static final int height = 1020;
     private static final String backgroundPath = "images/generate.jpg";
     private static final String backImagePath = "images/back.png";
-    private static final String fontPath = "font/TheMacabre.otf";
-    private static final float fontSize = 60f; 
+    // private static final String fontPath = "font/TheMacabre.otf";
+    // private static final float fontSize = 60f; 
 
     public GenerateRoleGUI(){
         setTitle("Les Loups-Garous de Thiercelieux");

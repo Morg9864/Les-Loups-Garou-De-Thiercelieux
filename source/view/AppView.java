@@ -1,4 +1,6 @@
 package source.view;
+
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -10,45 +12,53 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
 
-import source.controller.Controls;
-
-public class SimulatorMainGUI extends JFrame{
-    private static final int width = 1760;
-    private static final int height = 1020;
+public class AppView extends JFrame{
     private static final String backgroundPath = "images/background.jpg";
     private static final String fontPath = "font/TheMacabre.otf";
     private static final float fontSize = 60f;
-    private static final int buttonPosition[][] = {
-        {309, 654, 462, 139},
-        {975, 654, 462, 139}
-    };
 
-    public SimulatorMainGUI() {
-        // Création de la fenêtre
+    public AppView(){
         setTitle("Les Loups-Garous de Thiercelieux");
-        setSize(width, height);
+        setSize(1760, 1020);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setVisible(true);
 
-        // Création du layeredPane
+        JPanel panel = mainMenu();
+        changeContent(panel);
+    }
+
+    public void changeContent(JPanel newContent) {
+        getContentPane().removeAll();
+        getContentPane().add(newContent, BorderLayout.CENTER);
+        getContentPane().repaint();
+        getContentPane().revalidate();
+    }
+
+    protected JPanel mainMenu() {
+
+        JPanel panel = new JPanel();
+        getContentPane().add(panel, BorderLayout.CENTER);
+
         JLayeredPane layeredPane = new JLayeredPane();
-        layeredPane.setPreferredSize(new Dimension(width, height + 60));
-        setContentPane(layeredPane);
+        layeredPane.setPreferredSize(new Dimension(1760, 1080));
+        panel.add(layeredPane);
 
-        // Ajout du fond d'écran
         JLabel background = new JLabel(new ImageIcon(backgroundPath));
-        background.setBounds(0, -50, width, height + 60);
+        background.setBounds(0, -50, 1760, 1080);
         layeredPane.add(background, Integer.valueOf(0));
 
-        // Création de 2 boutons
         JButton generateRoleButton = new JButton("Générer les rôles");
-        generateRoleButton.addActionListener(e -> {Controls.generateRoleButtonFunc(this);});
-        generateRoleButton.setBounds(buttonPosition[0][0], buttonPosition[0][1], buttonPosition[0][2], buttonPosition[0][3]);
+        generateRoleButton.addActionListener(e -> {changeContent(new SettingUpGenerator(this));});
+        generateRoleButton.setBounds(309, 654, 462, 139);
         layeredPane.add(generateRoleButton, Integer.valueOf(1));
 
         JButton loadRoleButton = new JButton("Charger les rôles");
-        loadRoleButton.addActionListener(e -> {Controls.loadRoleButtonFunc(this);});
-        loadRoleButton.setBounds(buttonPosition[1][0], buttonPosition[1][1], buttonPosition[1][2], buttonPosition[1][3]);
+        loadRoleButton.addActionListener(e -> {changeContent(new LoadingRoles(this));});
+        loadRoleButton.setBounds(975, 654, 462, 139);
         layeredPane.add(loadRoleButton, Integer.valueOf(1));
         
         try {
@@ -63,9 +73,6 @@ public class SimulatorMainGUI extends JFrame{
             e.printStackTrace();
         }
 
-        // Affichage de la fenêtre
-        setLocationRelativeTo(null);
-        setResizable(false);
-        setVisible(true);
+        return panel;
     }
 }
