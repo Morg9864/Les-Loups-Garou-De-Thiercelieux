@@ -3,6 +3,7 @@ package source.view;
 public interface Const {
     public static final String MAIN_BACKGROUNG = "images/background.jpg";
     public static final String BACK_ARROW = "images/back.png";
+    public static final String SAVE_ICON = "images/save.png";
     public static final String LOAD_BACKGROUND = "images/load.jpg";
     public static final String GENERATE_BACKGROUND = "images/generate.jpg";
     public static final String ROLES_BACKGROUND = "images/roles.jpg";
