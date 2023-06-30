@@ -102,67 +102,56 @@ public class SettingUpGenerator extends JPanel implements Const{
         layeredPane.add(validateButton, FOREGROUND_CONSTRAINT);
 
         validateButton.addActionListener(e -> {
-            int nbPlayersSelected = (int) nbPlayersList.getSelectedItem();
-            if(nbPlayersSelected < 43){
-                textArea.setText("Choix extension :");
-                textArea.setBounds(735, 450, 350, 70);
-                layeredPane.remove(nbPlayersList);
-                layeredPane.remove(validateButton);
-                chooseExtension(appView, layeredPane, nbPlayersSelected);
-            } else {
-                Controls.update(appView, new GeneratingRoles(appView, nbPlayersSelected, true, true));
-            }
+            Controls.getExtension(appView, layeredPane, textArea, nbPlayersList, validateButton);
         });
     }
 
-    private void chooseExtension(AppView appView, JLayeredPane layeredPane, int nbPlayersSelected) {
-            // Création de 4 boutons pour les extensions
-            // Le 1er pour l'extension Village
-            // Le 2ème pour l'extension Nouvelle Lune
-            // Le 3ème pour les deux extensions
-            // Le 4ème pour aucune extension
+    public static void extension(AppView appView, JLayeredPane layeredPane, int nbPlayersSelected){
+        chooseExtension(appView, layeredPane, nbPlayersSelected);
+    }
 
-            Font font = null;
-            // Make it normal
-            font = new JButton().getFont();
-            try {
-                font = Font.createFont(Font.TRUETYPE_FONT, new File(THE_MACABRE_FONT));
-            } catch (FontFormatException e) {
-                System.out.println("Erreur lors du chargement de la police");
-                e.printStackTrace();
-            } catch (IOException e) {
-                System.out.println("Fichier de police introuvable");
-                e.printStackTrace();
-            }
+    private static void chooseExtension(AppView appView, JLayeredPane layeredPane, int nbPlayersSelected) {
+        Font font = null;
+        // Make it normal
+        font = new JButton().getFont();
+        try {
+            font = Font.createFont(Font.TRUETYPE_FONT, new File(THE_MACABRE_FONT));
+        } catch (FontFormatException e) {
+            System.out.println("Erreur lors du chargement de la police");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Fichier de police introuvable");
+            e.printStackTrace();
+        }
 
-            JButton villageButton = new JButton("Village");
-            villageButton.setBounds(720, 550, 300, 75);
-            villageButton.setFont(font.deriveFont(60f));
-            villageButton.setForeground(Color.BLACK);
-            villageButton.addActionListener(e -> {Controls.update(appView, new GeneratingRoles(appView, nbPlayersSelected, true, false));});
-            layeredPane.add(villageButton, FOREGROUND_CONSTRAINT);
+        JButton villageButton = new JButton("Village");
+        villageButton.setBounds(720, 550, 300, 75);
+        villageButton.setFont(font.deriveFont(60f));
+        villageButton.setForeground(Color.BLACK);
+        villageButton.addActionListener(e -> {Controls.update(appView, new GeneratingRoles(appView, nbPlayersSelected, true, false));});
+        layeredPane.add(villageButton, FOREGROUND_CONSTRAINT);
 
-            JButton newMoonButton = new JButton("Nouvelle Lune");
-            newMoonButton.setBounds(720, 650, 300, 75);
-            newMoonButton.setFont(font.deriveFont(60f));
-            newMoonButton.setForeground(Color.BLACK);
-            newMoonButton.addActionListener(e -> {Controls.update(appView, new GeneratingRoles(appView, nbPlayersSelected, false, true));});
-            layeredPane.add(newMoonButton, FOREGROUND_CONSTRAINT);
-            
-            JButton bothButton = new JButton("Les deux");
-            bothButton.setBounds(720, 750, 300, 75);
-            bothButton.setFont(font.deriveFont(60f));
-            bothButton.setForeground(Color.BLACK);
-            bothButton.addActionListener(e -> {Controls.update(appView, new GeneratingRoles(appView, nbPlayersSelected, true, true));});
-            layeredPane.add(bothButton, FOREGROUND_CONSTRAINT);
+        JButton newMoonButton = new JButton("Nouvelle Lune");
+        newMoonButton.setBounds(720, 650, 300, 75);
+        newMoonButton.setFont(font.deriveFont(60f));
+        newMoonButton.setForeground(Color.BLACK);
+        newMoonButton.addActionListener(e -> {Controls.update(appView, new GeneratingRoles(appView, nbPlayersSelected, false, true));});
+        layeredPane.add(newMoonButton, FOREGROUND_CONSTRAINT);
+        
+        JButton bothButton = new JButton("Les deux");
+        bothButton.setBounds(720, 750, 300, 75);
+        bothButton.setFont(font.deriveFont(60f));
+        bothButton.setForeground(Color.BLACK);
+        bothButton.addActionListener(e -> {Controls.update(appView, new GeneratingRoles(appView, nbPlayersSelected, true, true));});
+        layeredPane.add(bothButton, FOREGROUND_CONSTRAINT);
 
-            JButton noneButton = new JButton("Aucune");
-            noneButton.setBounds(720, 850, 300, 75);
-            noneButton.setFont(font.deriveFont(60f));
-            noneButton.setForeground(Color.BLACK);
-            noneButton.addActionListener(e -> {Controls.update(appView, new GeneratingRoles(appView, nbPlayersSelected, false, false));});
-            layeredPane.add(noneButton, FOREGROUND_CONSTRAINT);
+        JButton noneButton = new JButton("Aucune");
+        noneButton.setBounds(720, 850, 300, 75);
+        noneButton.setFont(font.deriveFont(60f));
+        noneButton.setForeground(Color.BLACK);
+        noneButton.addActionListener(e -> {Controls.update(appView, new GeneratingRoles(appView, nbPlayersSelected, false, false));});
+        layeredPane.add(noneButton, FOREGROUND_CONSTRAINT);
 
-            layeredPane.repaint();
+        layeredPane.repaint();
     }
 }
