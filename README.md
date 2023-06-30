@@ -47,7 +47,7 @@ une explication lié à ces rôles.
 
 6. __Interface utilisateur intuitive :__
 
-    * Le programme dispose d'une interface conviviale qui permet une navigation et une interaction faciles.
+    * Le programme dispose d'une interface conviviale qui permet une navigation et une interaction facile.
 
     * Il fournit des instructions claires et des indications pour guider les joueurs tout au long du processus de configuration du jeu et d'attribution des rôles.
 
