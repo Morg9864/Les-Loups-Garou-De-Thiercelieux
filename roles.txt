@@ -1,27 +1,10 @@
-25
-15 6 4
-Villageois Pure
-Villageois
-Villageois
-Villageois
-Villageois
-Villageois
-Loup-Garou
-Loup-Garou
-Loup-Garou
-Loup-Garou
+8
+2 2 4
 Grand Méchant Loup
-Infecte Père des Loups
 Sorcière
 Chasseur
 Voyante
+Loup-Garou
 Cupidon
-Petite Fille
-Voleur
-Salvateur
-Idiot du Village
-Joueur de Flûte
-Loup-Garou Blanc
-Ange
-Ancien
-Renard
+Villageois
+Villageois
