@@ -1,10 +1,17 @@
-8
-2 2 4
-Grand Méchant Loup
-Sorcière
-Chasseur
-Voyante
+15
+4 4 7
 Loup-Garou
+Loup-Garou
+Loup-Garou
+Chasseur
+Voleur
+Renard
+Abominable Sectaire
+Sorcière
+Voyante
+Grand Méchant Loup
+Villageois
+Villageois
+Villageois
+Villageois
 Cupidon
-Villageois
-Villageois
