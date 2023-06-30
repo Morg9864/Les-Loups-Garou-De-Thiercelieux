@@ -1,8 +1,10 @@
 package source.view;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import source.controller.Controls;
+import source.model.ConvertIntoIcon;
 
 public class AppView extends JFrame implements Const{
     public AppView(){
@@ -12,6 +14,9 @@ public class AppView extends JFrame implements Const{
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
+
+        ImageIcon icon = ConvertIntoIcon.convert();
+        setIconImage(icon.getImage()); 
 
         Controls.update(this, new MainMenu(this));
 
