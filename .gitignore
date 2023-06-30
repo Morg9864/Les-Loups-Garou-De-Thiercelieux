@@ -14,6 +14,7 @@
 # test files
 test.txt
 design.txt
+roles.txt
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
