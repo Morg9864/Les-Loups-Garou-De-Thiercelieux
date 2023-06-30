@@ -13,6 +13,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import source.controller.Controls;
+import source.model.Const;
 
 public class MainMenu extends JPanel implements Const{
     public MainMenu(AppView appView){

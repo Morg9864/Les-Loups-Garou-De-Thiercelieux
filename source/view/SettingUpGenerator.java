@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import source.controller.Controls;
+import source.model.Const;
 
 public class SettingUpGenerator extends JPanel implements Const{
     public SettingUpGenerator(AppView appView){

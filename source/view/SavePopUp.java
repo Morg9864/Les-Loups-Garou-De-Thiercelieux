@@ -5,6 +5,8 @@ import java.awt.Font;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 
+import source.model.Const;
+
 public class SavePopUp extends JDialog implements Const{
     public SavePopUp(AppView appView) {
         super(appView, "Configuration sauvegardée", true);

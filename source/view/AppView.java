@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import source.controller.Controls;
+import source.model.Const;
 import source.model.ConvertIntoIcon;
 
 public class AppView extends JFrame implements Const{

@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import source.controller.Controls;
+import source.model.Const;
 import source.model.NbPlayersIncorrectException;
 import source.model.Simulator;
 
