@@ -54,3 +54,5 @@ une explication lié à ces rôles.
 Que vous souhaitiez générer rapidement une configuration de jeu aléatoire, explorer différentes combinaisons de rôles ou disposer d'une référence pratique pour les descriptions de rôles, le __Loups-garou's Roles Simulator__ offre une solution polyvalente et pratique. Plongez dans l'univers des loups-garous, des villageois et des rôles mystérieux, et profitez de nombreuses heures de déduction sociale palpitante avec ce programme Java.
 
 Jeu du Loups-Garous de Thiercelieux : [https://fr.wikipedia.org/wiki/Les_Loups-garous_de_Thiercelieux]
+
+![alt text](https://github.com/Morg9864/Les-Loups-Garou-De-Thiercelieux/blob/main/images/icone.png?raw=true)
