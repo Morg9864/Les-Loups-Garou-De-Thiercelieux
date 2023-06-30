@@ -30,9 +30,14 @@ public class DisplayingRoles extends JPanel implements Const{
         layeredPane.add(background, BACKGROUND_CONSTRAINT);
 
         JButton backButton = new JButton(new ImageIcon(BACK_ARROW));
-        backButton.setBounds(30, 30, 130, 100);
+        backButton.setBounds(35, 30, 150, 130);
         backButton.addActionListener(e -> {Controls.update(appView, new MainMenu(appView));});
         layeredPane.add(backButton, FOREGROUND_CONSTRAINT);
+
+        JButton saveButton = new JButton(new ImageIcon(SAVE_ICON));
+        saveButton.setBounds(1575, 30, 150, 130);
+        saveButton.addActionListener(e -> {Controls.saveConfiguration(appView, simulator);});
+        layeredPane.add(saveButton, FOREGROUND_CONSTRAINT);
 
 
         JPanel grid = new JPanel();
