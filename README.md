@@ -3,7 +3,7 @@
 ------
 
 ## Description :
-Le Loups-garou's Roles Simulator est un programme basé sur Java qui vous permettra
+Le __Loups-garou's Roles Simulator__ est un programme basé sur Java qui vous permettra
 de sélectionner / choisir aléatoirement les rôles de votre partie, et d'afficher
 une explication lié à ces rôles.
 
@@ -51,6 +51,6 @@ une explication lié à ces rôles.
 
     * Il fournit des instructions claires et des indications pour guider les joueurs tout au long du processus de configuration du jeu et d'attribution des rôles.
 
-Que vous souhaitiez générer rapidement une configuration de jeu aléatoire, explorer différentes combinaisons de rôles ou disposer d'une référence pratique pour les descriptions de rôles, le Loups-garou's Roles Simulator offre une solution polyvalente et pratique. Plongez dans l'univers des loups-garous, des villageois et des rôles mystérieux, et profitez de nombreuses heures de déduction sociale palpitante avec ce programme Java.
+Que vous souhaitiez générer rapidement une configuration de jeu aléatoire, explorer différentes combinaisons de rôles ou disposer d'une référence pratique pour les descriptions de rôles, le __Loups-garou's Roles Simulator__ offre une solution polyvalente et pratique. Plongez dans l'univers des loups-garous, des villageois et des rôles mystérieux, et profitez de nombreuses heures de déduction sociale palpitante avec ce programme Java.
 
 Jeu du Loups-Garous de Thiercelieux : [https://fr.wikipedia.org/wiki/Les_Loups-garous_de_Thiercelieux]
