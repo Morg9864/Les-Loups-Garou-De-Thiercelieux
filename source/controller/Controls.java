@@ -9,9 +9,9 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import source.model.Const;
 import source.model.Simulator;
 import source.view.AppView;
-import source.view.Const;
 import source.view.GeneratingRoles;
 import source.view.SavePopUp;
 import source.view.SettingUpGenerator;
