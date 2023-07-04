@@ -1,17 +1,48 @@
-15
-4 4 7
-Loup-Garou
-Loup-Garou
-Loup-Garou
-Chasseur
-Voleur
-Renard
-Abominable Sectaire
-Sorcière
+46
+10 6 30
 Voyante
+Loup-Garou Blanc
+Infecte Père des Loups
+Servante Dévouée
+Ange
+Ancien
+Villageois
+Villageois
+Villageois
+Villageois
+Villageois
+Villageois
+Villageois
+Villageois
+Villageois
+Voleur
+Les Deux Soeurs
+Les Deux Soeurs
+Renard
+Petite Fille
 Grand Méchant Loup
-Villageois
-Villageois
-Villageois
-Villageois
+Gitane
+Pyromane
+Sorcière
+Les Trois Frères
+Les Trois Frères
+Les Trois Frères
+Corbeau
+Chasseur
+Juge Bègue
+Chevalier à l'Epée Rouillée
+Bouc Emissaire
+Idiot du Village
+Enfant Sauvage
+Salvateur
+Montreur d'Ours
+Abominable Sectaire
+Villageois Pur
+Comédien
+Joueur de Flûte
 Cupidon
+Chien-Loup
+Loup-Garou
+Loup-Garou
+Loup-Garou
+Loup-Garou
