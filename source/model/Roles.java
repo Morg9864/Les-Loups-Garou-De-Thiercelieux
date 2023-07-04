@@ -27,7 +27,7 @@ public class Roles {
             roles.add(new Role("Villageois", "Vous êtes un villageois. Vous n'avez pas de pouvoir particulier.", Type.VILLAGEOIS, Team.VILLAGE, "../../images/villageois.png"));
 
         // 1 Villageois Pure
-        roles.add(new Role("Villageois Pure", "Vous êtes le villageois pure. Vous n'avez pas de pouvoir particulier. Votre carte est à double face.", Type.VILLAGEOIS, Team.VILLAGE, "../../images/villageois_pure.png"));
+        roles.add(new Role("Villageois Pur", "Vous êtes le villageois pur. Vous n'avez pas de pouvoir particulier. Votre carte est à double face.", Type.VILLAGEOIS, Team.VILLAGE, "../../images/villageois_pure.png"));
 
         // 1 voyante
         roles.add(new Role("Voyante", "Vous êtes la voyante. Chaque nuit, vous pouvez espionner un joueur et découvrir sa véritable identité.", Type.VILLAGEOIS_SPECIAL, Team.VILLAGE,  "../../images/voyante.png"));
