@@ -9,7 +9,6 @@ import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
@@ -32,12 +31,16 @@ public class DisplayingRoles extends JPanel implements Const{
         background.setBounds(0, -50, WINDOW_WIDTH, WINDOW_HEIGHT);
         layeredPane.add(background, BACKGROUND_CONSTRAINT);
 
-        JButton backButton = new JButton(new ImageIcon(BACK_ARROW));
+        ImageIcon backButtonIcon = new ImageIcon(BACK_ARROW);
+        backButtonIcon = new ImageIcon(backButtonIcon.getImage().getScaledInstance(100, 90, Image.SCALE_SMOOTH));
+        RoundButton backButton = new RoundButton(backButtonIcon);
         backButton.setBounds(35, 30, 150, 130);
         backButton.addActionListener(e -> {Controls.update(appView, new MainMenu(appView));});
         layeredPane.add(backButton, FOREGROUND_CONSTRAINT);
 
-        JButton saveButton = new JButton(new ImageIcon(SAVE_ICON));
+        ImageIcon saveButtonIcon = new ImageIcon(SAVE_ICON);
+        saveButtonIcon = new ImageIcon(saveButtonIcon.getImage().getScaledInstance(100, 90, Image.SCALE_SMOOTH));
+        RoundButton saveButton = new RoundButton(saveButtonIcon);
         saveButton.setBounds(1575, 30, 150, 130);
         saveButton.addActionListener(e -> {Controls.saveConfiguration(appView, simulator);});
         layeredPane.add(saveButton, FOREGROUND_CONSTRAINT);
@@ -82,6 +85,9 @@ public class DisplayingRoles extends JPanel implements Const{
 
             JLabel nameLabel = new JLabel(role.getName() + " x" + roles.get(role));
             nameLabel.setHorizontalAlignment(JLabel.CENTER);
+
+            
+            nameLabel.setFont(nameLabel.getFont().deriveFont(15f));
 
             int verticalPadding = 10; // Définir la valeur de padding vertical souhaitée
 

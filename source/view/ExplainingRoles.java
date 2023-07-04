@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
@@ -81,7 +80,9 @@ public class ExplainingRoles extends JPanel implements Const{
         description.setCaretPosition(0);
         layeredPane.add(description, FOREGROUND_CONSTRAINT);
 
-        JButton backButton = new JButton(new ImageIcon(BACK_ARROW));
+        ImageIcon backButtonIcon = new ImageIcon(BACK_ARROW);
+        backButtonIcon = new ImageIcon(backButtonIcon.getImage().getScaledInstance(100, 90, Image.SCALE_SMOOTH));
+        RoundButton backButton = new RoundButton(backButtonIcon);
         backButton.setBounds(35, 30, 150, 130);
         backButton.addActionListener(e -> {Controls.update(appView, rolePanel);});
         layeredPane.add(backButton, FOREGROUND_CONSTRAINT);
