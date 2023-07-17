@@ -28,18 +28,25 @@ public class MainMenu extends JPanel implements Const{
 
         JButton generateRoleButton = new JButton("Générer les rôles");
         generateRoleButton.addActionListener(e -> {Controls.update(appView, new SettingUpGenerator(appView));});
-        generateRoleButton.setBounds(309, 654, 462, 139);
+        generateRoleButton.setBounds(309, 584, 462, 139);
         layeredPane.add(generateRoleButton, FOREGROUND_CONSTRAINT);
 
         JButton loadRoleButton = new JButton("Charger les rôles");
         loadRoleButton.addActionListener(e -> {Controls.update(appView, new LoadingRoles(appView));});
-        loadRoleButton.setBounds(975, 654, 462, 139);
+        loadRoleButton.setBounds(975, 584, 462, 139);
         layeredPane.add(loadRoleButton, FOREGROUND_CONSTRAINT);
+
+
+        JButton explicativeRole = new JButton("Exposition des rôles");
+        explicativeRole.addActionListener(e -> {Controls.update(appView, new GeneratingRoles(appView, 46, true, true));});
+        explicativeRole.setBounds(650, 770, 462, 139);
+        layeredPane.add(explicativeRole, FOREGROUND_CONSTRAINT);
         
         try {
             Font font = Font.createFont(Font.TRUETYPE_FONT, new File(THE_MACABRE_FONT));
             generateRoleButton.setFont(font.deriveFont(60f));
             loadRoleButton.setFont(font.deriveFont(60f));
+            explicativeRole.setFont(font.deriveFont(60f));
         } catch (FontFormatException e) {
             System.out.println("Erreur lors du chargement de la police");
             e.printStackTrace();

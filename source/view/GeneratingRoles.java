@@ -50,19 +50,13 @@ public class GeneratingRoles extends JPanel implements Const{
         layeredPane.add(background, BACKGROUND_CONSTRAINT);
 
         JTextArea textArea = new JTextArea();
-        JTextArea textArea2 = new JTextArea();
-        textArea.setBounds(580, 350, 1305, 150);
-        textArea2.setBounds(430, 500, 1305, 0);
+        textArea.setBounds(580, 450, 1305, 150);
         textArea.setText("Les rôles ont été générés avec succès !");
-        textArea2.setText("Vous pouvez maintenant les afficher en cliquant sur le bouton");
         textArea.setOpaque(false);
-        textArea2.setOpaque(false);
         textArea.setEditable(false);
-        textArea2.setEditable(false);
         try {
             Font font = Font.createFont(Font.TRUETYPE_FONT, new File(THE_MACABRE_FONT));
             textArea.setFont(font.deriveFont(60f));
-            textArea2.setFont(font.deriveFont(60f));
         } catch (FontFormatException e) {
             System.out.println("Erreur lors du chargement de la police");
             e.printStackTrace();
@@ -74,19 +68,11 @@ public class GeneratingRoles extends JPanel implements Const{
         textArea.setAlignmentX(CENTER_ALIGNMENT);
         textArea.setAlignmentY(CENTER_ALIGNMENT);
 
-        textArea2.setAlignmentX(CENTER_ALIGNMENT);
-        textArea2.setAlignmentY(CENTER_ALIGNMENT);
-        
         textArea.setForeground(Color.WHITE);
-        textArea2.setForeground(Color.WHITE);
         textArea.setWrapStyleWord(true);
-        textArea2.setWrapStyleWord(true);
         textArea.setLineWrap(true);
-        textArea2.setLineWrap(true);
         textArea.setCaretPosition(BACKGROUND_CONSTRAINT);
-        textArea2.setCaretPosition(BACKGROUND_CONSTRAINT);
         layeredPane.add(textArea, FOREGROUND_CONSTRAINT);
-        layeredPane.add(textArea2, FOREGROUND_CONSTRAINT); 
 
         JButton displayRoleButton = new JButton("Afficher les rôles");
         displayRoleButton.setBounds(595, 715, 560, 150);

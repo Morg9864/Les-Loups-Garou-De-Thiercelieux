@@ -1,11 +1,11 @@
 9
-2 2 5
-Petite Fille
-Sorcière
+0 2 7
+Grand Méchant Loup
 Loup-Garou
-Loup-Garou
-Villageois
-Villageois
-Cupidon
+Enfant Sauvage
 Chasseur
+Sorcière
+Renard
 Voyante
+Joueur de Flûte
+Salvateur
