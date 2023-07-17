@@ -103,6 +103,36 @@ public class Simulator {
         sc.close();
     }
 
+    // Aléatoire libre
+    public Simulator(int nbPlayers) throws NbPlayersIncorrectException{
+        this.nbPlayers = nbPlayers;
+        if(nbPlayers < Roles.getMinJoueurs() || nbPlayers > Roles.getMaxJoueurs()){
+            throw new NbPlayersIncorrectException("Le nombre de joueurs doit être compris entre 8 et 46");
+        }
+
+        Roles roles = new Roles();
+        int tmpNbVillage = 0, tmpNbLoups = 0, tmpNbThirdParty = 0;
+
+        ArrayList<Role> randomRoles = roles.getRandomRoles(nbPlayers, true, true);
+        selectedRoles = new HashMap<Role, Integer>();
+        for(Role role : randomRoles){
+            pushIntoHashmap(role);
+            // Comptons le nombre de villageois, loups-garous et tiers
+            if(role.getTeam() == Team.VILLAGE){
+                tmpNbVillage++;
+            } else if(role.getTeam() == Team.LOUPS){
+                tmpNbLoups++;
+            } else {
+                tmpNbThirdParty++;
+            }
+        }
+
+        nbVillageois = tmpNbVillage;
+        nbLoupsGarous = tmpNbLoups;
+        nbThirdParty = tmpNbThirdParty;
+
+    }
+
     private void removeBSN(String str){
         str = str.replaceAll("\n", "");
     }
@@ -205,5 +235,20 @@ public class Simulator {
         }
 
         return differentRoles.size();
+    }
+
+    public static void main(String[] args) {
+        try {
+            Simulator simulator = new Simulator(9);
+            simulator.save("test.txt");
+        } catch (NbPlayersIncorrectException e) {
+            System.out.println("Erreur lors de la création du simulateur");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Erreur lors de la sauvegarde");
+            e.printStackTrace();
+        }
+
+
     }
 }

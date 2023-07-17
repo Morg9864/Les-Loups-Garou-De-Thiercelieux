@@ -126,32 +126,39 @@ public class SettingUpGenerator extends JPanel implements Const{
         }
 
         JButton villageButton = new JButton("Village");
-        villageButton.setBounds(720, 550, 300, 75);
+        villageButton.setBounds(720, 450, 300, 75);
         villageButton.setFont(font.deriveFont(60f));
         villageButton.setForeground(Color.BLACK);
         villageButton.addActionListener(e -> {Controls.update(appView, new GeneratingRoles(appView, nbPlayersSelected, true, false));});
         layeredPane.add(villageButton, FOREGROUND_CONSTRAINT);
 
         JButton newMoonButton = new JButton("Nouvelle Lune");
-        newMoonButton.setBounds(720, 650, 300, 75);
+        newMoonButton.setBounds(720, 550, 300, 75);
         newMoonButton.setFont(font.deriveFont(60f));
         newMoonButton.setForeground(Color.BLACK);
         newMoonButton.addActionListener(e -> {Controls.update(appView, new GeneratingRoles(appView, nbPlayersSelected, false, true));});
         layeredPane.add(newMoonButton, FOREGROUND_CONSTRAINT);
         
         JButton bothButton = new JButton("Les deux");
-        bothButton.setBounds(720, 750, 300, 75);
+        bothButton.setBounds(720, 650, 300, 75);
         bothButton.setFont(font.deriveFont(60f));
         bothButton.setForeground(Color.BLACK);
         bothButton.addActionListener(e -> {Controls.update(appView, new GeneratingRoles(appView, nbPlayersSelected, true, true));});
         layeredPane.add(bothButton, FOREGROUND_CONSTRAINT);
 
         JButton noneButton = new JButton("Aucune");
-        noneButton.setBounds(720, 850, 300, 75);
+        noneButton.setBounds(720, 750, 300, 75);
         noneButton.setFont(font.deriveFont(60f));
         noneButton.setForeground(Color.BLACK);
         noneButton.addActionListener(e -> {Controls.update(appView, new GeneratingRoles(appView, nbPlayersSelected, false, false));});
         layeredPane.add(noneButton, FOREGROUND_CONSTRAINT);
+
+        JButton randomButton = new JButton("100% aléatoire");
+        randomButton.setBounds(720, 850, 300, 75);
+        randomButton.setFont(font.deriveFont(60f));
+        randomButton.setForeground(Color.BLACK);
+        randomButton.addActionListener(e -> {Controls.update(appView, new GeneratingRoles(appView, nbPlayersSelected));});
+        layeredPane.add(randomButton, FOREGROUND_CONSTRAINT);
 
         layeredPane.repaint();
     }

@@ -28,9 +28,29 @@ public class GeneratingRoles extends JPanel implements Const{
             failedGenerating(appView);
     }
 
+    public GeneratingRoles(AppView appView, int nbPlayers) {
+        Simulator simulator = generateRoles(nbPlayers);
+        if(simulator != null)
+            successfulGenerating(appView, simulator);
+        else
+            failedGenerating(appView);
+    }
+
     private Simulator generateRoles(int nbPlayers, boolean avecExtensionVillage, boolean avecExtensionNouvelleLune) {
         try {
             Simulator simulator = new Simulator(nbPlayers, avecExtensionVillage, avecExtensionNouvelleLune);
+            return simulator;
+        } catch (NbPlayersIncorrectException e) {
+            System.out.println("Problème avec le nombre de joueurs");
+            e.printStackTrace();
+        }
+        
+        return null;
+    }
+
+    private Simulator generateRoles(int nbPlayers) {
+        try {
+            Simulator simulator = new Simulator(nbPlayers);
             return simulator;
         } catch (NbPlayersIncorrectException e) {
             System.out.println("Problème avec le nombre de joueurs");

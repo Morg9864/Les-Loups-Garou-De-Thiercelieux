@@ -287,4 +287,86 @@ public class Roles {
 
         return randomRoles;
     }
+
+    public ArrayList<Role> getRandomRoles(int nbPlayers, boolean extensionVillage, boolean extensionNouvelleLune){
+        ArrayList<Role> randomRoles = new ArrayList<Role>();
+        ArrayList<Role> rolesList = new ArrayList<Role>();
+        Random randomObj = new Random();
+
+        // On copie la liste des rôles
+        for(Role role : roles)
+            rolesList.add(role);
+
+        // Il faut au minimum un role de type loup ou solitaire
+        for(Role role : rolesList){
+            if(role.getType() == Type.LOUP_GAROU || role.getType() == Type.SOLITAIRE){
+                randomRoles.add(role);
+                rolesList.remove(role);
+                break;
+            }
+        }
+            
+
+        // On ajoute les rôles aléatoires
+        Role newAddedRole = null;
+        for(int i = 0; i < nbPlayers - 1; i++) {
+            int random = randomObj.nextInt(rolesList.size());
+            newAddedRole = rolesList.get(random);
+
+            if(newAddedRole.getName().equals("Les Deux Soeurs")) {
+                if(nbPlayers - i >= 2){
+                    // On ajoute les deux soeurs
+                    for(int j = 0; j < 2; j++)
+                        randomRoles.add(newAddedRole);
+
+                    rolesList.remove(newAddedRole);
+                    // On incrémente i de 1
+                    i++;
+                } else {
+                    i--;
+                }
+
+            } else if(newAddedRole.getName().equals("Les Trois Frères")) {
+                if(nbPlayers - i >= 3){
+                    // On ajoute les trois frères
+                    for(int j = 0; j < 3; j++)
+                        randomRoles.add(newAddedRole);
+                    
+                    rolesList.remove(newAddedRole);
+                    // On incrémente i de 2
+                    i += 2;
+                } else {
+                    i--;
+                }
+
+            } else if((newAddedRole.getName().equals("Corbeau") || newAddedRole.getName().equals("Pyromane"))) {
+                if(extensionVillage){
+                    // On ajoute le rôle aléatoire
+                    randomRoles.add(newAddedRole);
+                    // On supprime le rôle aléatoire de la liste des rôles
+                    rolesList.remove(newAddedRole);
+                } else {
+                    i--;
+                }
+
+            } else if(newAddedRole.getName().equals("Gitane")) {
+                if(extensionNouvelleLune){
+                    // On ajoute le rôle aléatoire
+                    randomRoles.add(newAddedRole);
+                    // On supprime le rôle aléatoire de la liste des rôles
+                    rolesList.remove(newAddedRole);
+                } else {
+                    i--;
+                }
+
+            } else {
+                // On ajoute le rôle aléatoire
+                randomRoles.add(newAddedRole);
+                // On supprime le rôle aléatoire de la liste des rôles
+                rolesList.remove(newAddedRole);
+            }
+        }
+
+        return randomRoles;
+    }
 }

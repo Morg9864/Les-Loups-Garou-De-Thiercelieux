@@ -43,7 +43,7 @@ public class Controls implements Const{
         int nbPlayersSelected = (int) nbPlayersList.getSelectedItem();
         if(nbPlayersSelected < 43){
             textArea.setText("Choix extension :");
-            textArea.setBounds(735, 450, 350, 70);
+            textArea.setBounds(735, 350, 350, 70);
             layeredPane.remove(nbPlayersList);
             layeredPane.remove(validateButton);
             SettingUpGenerator.extension(appView, layeredPane, nbPlayersSelected);
