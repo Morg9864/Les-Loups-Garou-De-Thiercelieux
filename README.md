@@ -29,6 +29,8 @@ une explication lié à ces rôles.
 
     * Les cartes de rôles sont présentées de manière visuelle, ajoutant à l'immersion dans l'expérience de jeu.
 
+    * Il est maintenant possible de regarder les rôles présents dans le jeu directement via le menu d'accueil
+
 
 4. __Descriptions des rôles :__
 
