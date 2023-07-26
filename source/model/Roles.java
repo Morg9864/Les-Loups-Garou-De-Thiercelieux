@@ -297,9 +297,9 @@ public class Roles {
         for(Role role : roles)
             rolesList.add(role);
 
-        // Il faut au minimum un role de type loup ou solitaire
+        // Il faut au minimum un role de type loup
         for(Role role : rolesList){
-            if(role.getType() == Type.LOUP_GAROU || role.getType() == Type.SOLITAIRE){
+            if(role.getType() == Type.LOUP_GAROU){
                 randomRoles.add(role);
                 rolesList.remove(role);
                 break;
@@ -309,12 +309,13 @@ public class Roles {
 
         // On ajoute les rôles aléatoires
         Role newAddedRole = null;
-        for(int i = 0; i < nbPlayers - 1; i++) {
+        int nbRoleToAdd = nbPlayers - 1;
+        for(int i = 0; i < nbRoleToAdd; i++) {
             int random = randomObj.nextInt(rolesList.size());
             newAddedRole = rolesList.get(random);
 
             if(newAddedRole.getName().equals("Les Deux Soeurs")) {
-                if(nbPlayers - i >= 2){
+                if(nbRoleToAdd - i >= 2){
                     // On ajoute les deux soeurs
                     for(int j = 0; j < 2; j++)
                         randomRoles.add(newAddedRole);
@@ -327,7 +328,7 @@ public class Roles {
                 }
 
             } else if(newAddedRole.getName().equals("Les Trois Frères")) {
-                if(nbPlayers - i >= 3){
+                if(nbRoleToAdd - i >= 3){
                     // On ajoute les trois frères
                     for(int j = 0; j < 3; j++)
                         randomRoles.add(newAddedRole);
