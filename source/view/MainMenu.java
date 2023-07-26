@@ -39,7 +39,7 @@ public class MainMenu extends JPanel implements Const{
 
         JButton explicativeRole = new JButton("Exposition des rôles");
         explicativeRole.addActionListener(e -> {Controls.update(appView, new GeneratingRoles(appView, 46, true, true));});
-        explicativeRole.setBounds(650, 770, 462, 139);
+        explicativeRole.setBounds(635, 770, 462, 139);
         layeredPane.add(explicativeRole, FOREGROUND_CONSTRAINT);
         
         try {
