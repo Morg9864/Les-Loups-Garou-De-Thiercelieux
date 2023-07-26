@@ -1,11 +1,17 @@
-9
-0 2 7
-Grand Méchant Loup
-Loup-Garou
-Enfant Sauvage
+15
+4 4 7
+Infecte Père des Loups
 Chasseur
-Sorcière
-Renard
+Abominable Sectaire
+Loup-Garou
+Loup-Garou
 Voyante
-Joueur de Flûte
-Salvateur
+Villageois
+Villageois
+Villageois
+Villageois
+Grand Méchant Loup
+Sorcière
+Les Deux Soeurs
+Les Deux Soeurs
+Cupidon
